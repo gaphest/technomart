@@ -1,0 +1,83 @@
+@import "sprite.scss";
+
+@mixin sprite-image($sprite) {
+  $sprite-image : nth($sprite, 9);
+
+  background-image : url(../img/#{$sprite-image});
+}
+
+@mixin regsprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+
+  position : absolute;
+  top : 50%;
+  left : 50%;
+
+  background-repeat : no-repeat ;
+}
+
+@mixin sprite-center($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+
+  position : absolute;
+  top : 50%;
+  left : 50%;
+
+  margin-left : - ( nth($sprite, 5) / 2);
+
+  transform : translateY(-50%);
+
+  background-repeat : no-repeat ;
+}
+
+@mixin bg-sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+
+  background-repeat : no-repeat ;
+}
+
+@mixin before-sprite-center($sprite) {
+  @include sprite-center($sprite);
+
+  content : "";
+}
+
+@mixin before-sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+
+  position : absolute;
+
+  content : "";
+
+  background-repeat : no-repeat ;
+}
+
+@mixin padding-top-bottom($all-height, $content-height){
+  padding-top: ($all-height - $content-height)/2;
+  padding-bottom: ($all-height - $content-height)/2;
+}
+
+@mixin padding-horizontal($all-width, $content-width){
+  padding-left:($all-width - $content-width)/2;
+  padding-right: ($all-width - $content-width)/2;
+}
+
+@mixin padding-all-sides($all-height, $all-width, $content-height, $content-width){
+  padding-top: ($all-height - $content-height)/2;
+  padding-bottom: ($all-height - $content-height)/2;
+  padding-left:($all-width - $content-width)/2;
+  padding-right: ($all-width - $content-width)/2;
+}
+
+
+
